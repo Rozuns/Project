@@ -1,12 +1,10 @@
-
-
     class Program
     {
 
-        // Разрешени символи {M}
-        static char[] M = new char[] { 'Г' 'З' 'Л' 'П' 'У', 'Ч', 'Ь', 'А', 'Д', 'И', 'М', 'Р', 'Ф', 'Ш', 'Ю', 'Б', 'Е', 'Й', 'Н', 'С', 'Х', 'Щ', 'Я', 'В', 'Ж', 'К', 'О', 'Т', 'Ц', 'Ъ', ' ' };
+        // Р Р°Р·СЂРµС€РµРЅРё СЃРёРјРІРѕР»Рё {M}
+        static char[] M = new char[] { 'Р“' 'Р—' 'Р›' 'Рџ' 'РЈ', 'Р§', 'Р¬', 'Рђ', 'Р”', 'Р', 'Рњ', 'Р ', 'Р¤', 'РЁ', 'Р®', 'Р‘', 'Р•', 'Р™', 'Рќ', 'РЎ', 'РҐ', 'Р©', 'РЇ', 'Р’', 'Р–', 'Рљ', 'Рћ', 'Рў', 'Р¦', 'РЄ', ' ' };
         static int n = M.Length;
-        // Определяне на позицията на даден символ в {M}
+        // РћРїСЂРµРґРµР»СЏРЅРµ РЅР° РїРѕР·РёС†РёСЏС‚Р° РЅР° РґР°РґРµРЅ СЃРёРјРІРѕР» РІ {M}
         static int ReturnPosition(char c)
         {
             for (int i = 0; i < n; i++)
@@ -19,30 +17,30 @@
             return -1;
         }
 
-        // Шифроване
+        // РЁРёС„СЂРѕРІР°РЅРµ
         static string Encrypt(string P, string K)
         {
             int i;
-            // Инициализиране на C
+            // РРЅРёС†РёР°Р»РёР·РёСЂР°РЅРµ РЅР° C
             string C = "";
-            // Позиция на символа от P в {M}
+            // РџРѕР·РёС†РёСЏ РЅР° СЃРёРјРІРѕР»Р° РѕС‚ P РІ {M}
             int posM;
-            // Позиция на символа от К в {M}
+            // РџРѕР·РёС†РёСЏ РЅР° СЃРёРјРІРѕР»Р° РѕС‚ Рљ РІ {M}
             int posK;
 
-            // Обхождане на P
+            // РћР±С…РѕР¶РґР°РЅРµ РЅР° P
             for (i = 0; i < P.Length; i++)
             {
                 posM = ReturnPosition(P[i]);
 
-                // Проверка за невалиден символ
+                // РџСЂРѕРІРµСЂРєР° Р·Р° РЅРµРІР°Р»РёРґРµРЅ СЃРёРјРІРѕР»
                 if (posM == -1)
                 {
-                    Console.WriteLine("НЕВАЛИДЕН СИМВОЛ");
+                    Console.WriteLine("РќР•Р’РђР›РР”Р•Рќ РЎРРњР’РћР›");
                     return string.Empty;
                 }
 
-                // Циклично използване на ключа
+                // Р¦РёРєР»РёС‡РЅРѕ РёР·РїРѕР»Р·РІР°РЅРµ РЅР° РєР»СЋС‡Р°
                 if (i < K.Length)
                 {
                     posK = ReturnPosition(K[i]);
@@ -52,30 +50,30 @@
                     posK = ReturnPosition(K[i % K.Length]);
                 }
 
-                // Добавяне на символ към C
+                // Р”РѕР±Р°РІСЏРЅРµ РЅР° СЃРёРјРІРѕР» РєСЉРј C
                 C += M[(posM + posK) % n - 1];
             }
 
             return C;
         }
 
-        // Дешифриране
+        // Р”РµС€РёС„СЂРёСЂР°РЅРµ
         static string Decrypt(string C, string K)
         {
             int i;
-            // Инициализиране на P
+            // РРЅРёС†РёР°Р»РёР·РёСЂР°РЅРµ РЅР° P
             string P = "";
-            // Позиция на символа от C в {M}
+            // РџРѕР·РёС†РёСЏ РЅР° СЃРёРјРІРѕР»Р° РѕС‚ C РІ {M}
             int posM;
-            // Позиция на символа от К в {M}
+            // РџРѕР·РёС†РёСЏ РЅР° СЃРёРјРІРѕР»Р° РѕС‚ Рљ РІ {M}
             int posK;
 
-            // Обхождане на C
+            // РћР±С…РѕР¶РґР°РЅРµ РЅР° C
             for (i = 0; i < C.Length; i++)
             {
                 posM = ReturnPosition(C[i]);
 
-                // Циклично използване на ключа
+                // Р¦РёРєР»РёС‡РЅРѕ РёР·РїРѕР»Р·РІР°РЅРµ РЅР° РєР»СЋС‡Р°
                 if (i < K.Length)
                 {
                     posK = ReturnPosition(K[i]);
@@ -85,7 +83,7 @@
                     posK = ReturnPosition(K[i % K.Length]);
                 }
 
-                // Добавяне на символ към P
+                // Р”РѕР±Р°РІСЏРЅРµ РЅР° СЃРёРјРІРѕР» РєСЉРј P
                 int d = (posM - posK) % n - 1;
                 if (d >= 0)
                     P += M[d];
@@ -108,17 +106,17 @@
             bool isDone = false;
             while (!isDone)
             {
-                Console.WriteLine("1. Криптиране");
-                Console.WriteLine("2. Декриптиране");
-                Console.WriteLine("3. Спиране на програмата");
-                Console.WriteLine("Моля изберете метод");
+                Console.WriteLine("1. РљСЂРёРїС‚РёСЂР°РЅРµ");
+                Console.WriteLine("2. Р”РµРєСЂРёРїС‚РёСЂР°РЅРµ");
+                Console.WriteLine("3. РЎРїРёСЂР°РЅРµ РЅР° РїСЂРѕРіСЂР°РјР°С‚Р°");
+                Console.WriteLine("РњРѕР»СЏ РёР·Р±РµСЂРµС‚Рµ РјРµС‚РѕРґ");
                 choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "1":
-                        Console.Write("Въведете P: ");
+                        Console.Write("Р’СЉРІРµРґРµС‚Рµ P: ");
                         P = Console.ReadLine().ToUpper();
-                        Console.Write("Въведете K: ");
+                        Console.Write("Р’СЉРІРµРґРµС‚Рµ K: ");
                         K = Console.ReadLine().ToUpper();
 
                         C = Encrypt(P, K);                       
@@ -126,9 +124,9 @@
                         Console.WriteLine("C: " + C);                       
                         break;
                     case "2":
-                        Console.Write("Въведете C: ");
+                        Console.Write("Р’СЉРІРµРґРµС‚Рµ C: ");
                         C = Console.ReadLine().ToUpper();
-                        Console.Write("Въведете K: ");
+                        Console.Write("Р’СЉРІРµРґРµС‚Рµ K: ");
                         K = Console.ReadLine().ToUpper();
                         P1 = Decrypt(C, K);
                         Console.WriteLine();                       
@@ -138,7 +136,7 @@
                         isDone = true;
                         break;
                     default:
-                        Console.WriteLine("Моля изберете от менюто");
+                        Console.WriteLine("РњРѕР»СЏ РёР·Р±РµСЂРµС‚Рµ РѕС‚ РјРµРЅСЋС‚Рѕ");
                         break;
                 }
             }
