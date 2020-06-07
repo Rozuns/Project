@@ -1,8 +1,19 @@
-    class Program
+//Rextester.Program.Main is the entry point for your code. Don't change it.
+//Microsoft (R) Visual C# Compiler version 2.9.0.63208 (958f2354)
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Rextester
+{
+    public  class Program
     {
 
         // Разрешени символи {M}
-        static char[] M = new char[] { 'Г' 'З' 'Л' 'П' 'У', 'Ч', 'Ь', 'А', 'Д', 'И', 'М', 'Р', 'Ф', 'Ш', 'Ю', 'Б', 'Е', 'Й', 'Н', 'С', 'Х', 'Щ', 'Я', 'В', 'Ж', 'К', 'О', 'Т', 'Ц', 'Ъ', ' ' };
+        static char[] M = new char[] { 'Г','З','Л','П','У', 'Ч', 'Ь', 'А', 'Д', 'И', 'М', 'Р', 'Ф', 'Ш', 'Ю', 'Б', 'Е', 'Й', 'Н', 'С', 'Х', 'Щ', 'Я', 'В', 'Ж', 'К', 'О', 'Т', 'Ц', 'Ъ', ' ' };
         static int n = M.Length;
         // Определяне на позицията на даден символ в {M}
         static int ReturnPosition(char c)
@@ -58,7 +69,7 @@
         }
 
         // Дешифриране
-        static string Decrypt(string C, string K)
+       static string Decrypt(string C, string K)
         {
             int i;
             // Инициализиране на P
@@ -94,9 +105,9 @@
             return P;
         }
 
-        static void Main(string[] args)
+       public static void Main ( string[] args )
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            //Console.OutputEncoding = Encoding.UTF8;
             string P;
             string K;
             string C;
@@ -143,3 +154,4 @@
         }
     }
 
+}
